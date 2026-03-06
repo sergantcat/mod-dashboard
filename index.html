@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Moderation Dashboard</title>
+
+<style>
+body{
+font-family: Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+width:80%;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #334155;
+}
+
+th{
+background:#1e293b;
+}
+
+tr:hover{
+background:#1e293b;
+}
+
+h1{
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Moderation Dashboard</h1>
+
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>User</th>
+<th>Punishment</th>
+<th>Moderator</th>
+<th>Duration</th>
+<th>Reason</th>
+</tr>
+</thead>
+
+<tbody id="cases"></tbody>
+
+</table>
+
+<script>
+
+let cases = JSON.parse(localStorage.getItem("cases")) || [];
+
+function render(){
+let table = document.getElementById("cases");
+table.innerHTML="";
+
+cases.forEach(c=>{
+table.innerHTML += `
+<tr>
+<td>#${c.case}</td>
+<td>${c.user}</td>
+<td>${c.punishment}</td>
+<td>${c.moderator}</td>
+<td>${c.duration}</td>
+<td>${c.reason}</td>
+</tr>
+`;
+});
+}
+
+render();
+
+</script>
+
+</body>
+</html>
