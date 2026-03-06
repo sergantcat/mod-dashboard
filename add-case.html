@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const newCase = {
+case: params.get("case"),
+user: params.get("user"),
+punishment: params.get("punishment"),
+moderator: params.get("moderator"),
+duration: params.get("duration"),
+reason: params.get("reason")
+};
+
+let cases = JSON.parse(localStorage.getItem("cases")) || [];
+
+cases.push(newCase);
+
+localStorage.setItem("cases", JSON.stringify(cases));
+
+document.body.innerHTML = "Case added successfully";
+
+</script>
+
+</body>
+</html>
